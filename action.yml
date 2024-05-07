@@ -6,7 +6,8 @@ runs:
   steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
-      node-version: current
+      with:
+        node-version: current
     - uses: pnpm/action-setup@v3
       with:
         version: 9
