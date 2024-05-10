@@ -1,6 +1,12 @@
 name: setup-pnpm
 description: 🚙 reuse pnpm setup on CI over and over
 
+inputs:
+  working-directory:
+    description: Specify where to run the install command
+    required: false
+    default: .
+
 runs:
   using: composite
   steps:
@@ -20,3 +26,4 @@ runs:
         restore-keys: ${{ runner.os }}-pnpm-store-
     - run: pnpm i
       shell: bash
+      working-directory: ${{ inputs.working_directory }}
