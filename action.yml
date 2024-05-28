@@ -2,6 +2,10 @@ name: setup-pnpm
 description: 🚙 reuse pnpm setup on CI over and over
 
 inputs:
+  node-version:
+    description: Node.js version to use
+    required: false
+    default: current
   working-directory:
     description: Specify where to run the install command
     required: false
@@ -13,7 +17,7 @@ runs:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
-        node-version: current
+        node-version: ${{ inputs.node-version }}
     - uses: pnpm/action-setup@v3
       with:
         version: 9
