@@ -18,6 +18,10 @@ inputs:
     description: Checkout also submodules
     required: false
     default: false
+  fetch-depth:
+    description: Fetch depth for actions/checkout
+    required: false
+    default: 1
 
 runs:
   using: composite
@@ -25,6 +29,7 @@ runs:
     - uses: actions/checkout@v4
       with:
         submodules: ${{ inputs.submodules }}
+        fetch-depth: ${{ inputs.fetch-depth }}
     - uses: actions/setup-node@v4
       with:
         node-version: ${{ inputs.node-version }}
