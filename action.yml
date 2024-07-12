@@ -22,6 +22,10 @@ inputs:
     description: Fetch depth for actions/checkout
     required: false
     default: 1
+  github-token:
+    description: GitHub token
+    required: false
+    default: ${{ secrets.GITHUB_TOKEN }}
 
 runs:
   using: composite
@@ -47,4 +51,6 @@ runs:
         restore-keys: ${{ runner.os }}-pnpm-store-
     - run: pnpm i
       shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
       working-directory: ${{ inputs.working-directory }}
