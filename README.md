@@ -25,8 +25,4 @@ This action checks-out your repository, set-up node and pnpm, cache your depende
     # Specify where to run the install command
     # Default: .
     working-directory: ''
-
-    # Specify the gitHub token to be used (at the moment just for the pnpm i step)
-    # Default: ${{ secrets.GITHUB_TOKEN }}
-    github-token: ''
 ```
