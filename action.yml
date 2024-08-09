@@ -56,6 +56,6 @@ runs:
       shell: bash
       working-directory: ${{ inputs.working-directory }}
     - run: ${{ inputs.build }}
-      if: ${{ inputs.build != "" }}
+      if: ${{ inputs.build != '' }}
       shell: bash
       working-directory: ${{ inputs.working-directory }}
