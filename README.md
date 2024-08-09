@@ -25,4 +25,12 @@ This action checks-out your repository, set-up node and pnpm, cache your depende
     # Specify where to run the install command
     # Default: .
     working-directory: ''
+    
+    # Installation script to run
+    # Default: pnpm i
+    install: ''
+
+    # Build script to run, usually `pnpm build`
+    # Default: ''
+    build: ''
 ```
