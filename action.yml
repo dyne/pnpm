@@ -22,6 +22,13 @@ inputs:
     description: Fetch depth for actions/checkout
     required: false
     default: 1
+  install:
+    description: Installation script to run
+    required: false
+    default: pnpm i
+  build:
+    description: Build script to run
+    required: false
 
 runs:
   using: composite
@@ -45,6 +52,10 @@ runs:
         path: ${{ env.STORE_PATH }}
         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: ${{ runner.os }}-pnpm-store-
-    - run: pnpm i
+    - run: ${{ inputs.install }}
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+    - run: ${{ inputs.build }}
+      if: ${{ inputs.build != '' }}
       shell: bash
       working-directory: ${{ inputs.working-directory }}
